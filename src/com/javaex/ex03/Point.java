@@ -1,4 +1,4 @@
-package com.javaex.ex02;
+package com.javaex.ex03;
 
 public class Point {
 	
@@ -49,9 +49,36 @@ public class Point {
 		return 100;
 	}
 	*/
+
+	@Override //Point 같다의 재정의 01
+	public boolean equals(Object obj) { //Object obj 뭐든지 다 들어갈수 있는 형식 위험함//
+		
+		Point target = (Point)obj;
+		
+		if(this.x == target.x &&  this.y == target.y) {
+			return true;
+		}else {
+			return false;
+		}
+		
+		
+	}
+	/*
+	@Override  //Point 같다의 재정의 02
+	public boolean equals(Object obj) { //Object obj 뭐든지 다 들어갈수 있는 형식 위험함//
+		if(this.x == ((Point)obj).x &&this.y == ((Point)obj).y) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	*/
+	
 	@Override
 	public String toString() {
 		return "Point [x=" + x + ", y=" + y + "]";
 	}
+
+	
 	
 }
