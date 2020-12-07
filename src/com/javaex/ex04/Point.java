@@ -1,6 +1,6 @@
 package com.javaex.ex04;
 
-public class Point {
+public class Point {  //equals() , hashCode() 재정의
 	
 	
 	//필드
@@ -54,18 +54,28 @@ public class Point {
 
 	@Override
 	public boolean equals(Object obj) {
+		
+		//참고: if문의 괄호 안의 내용이 1줄인 경우 괄호 생략가능
+		
 		if (this == obj)  //같은 인스턴스일때
 			return true;
 		if (obj == null) //비교대상이 없을때
 			return false;
 		if (getClass() != obj.getClass()) //Point Circle 비교할때
 			return false;
+		
 		Point other = (Point) obj;
-		if (x != other.x)
-			return false;
-		if (y != other.y)
-			return false;
-		return true;
+		//변경 (코드에 다라서는 자동으로 만들어지는것에서 변경 필요)
+		if (this.hashCode() == other.hashCode()) { //해시코드가 같으면
+			if(this.x == other.x && this.y == other.y) { //세부적으로 비교
+				return true;
+			}else{
+				return false;
+			}
+		}else { //해시코드가 다르면
+			return false; //다르다
+		}
+			
 	}
 	
 	/*
